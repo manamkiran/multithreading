@@ -19,7 +19,6 @@ public class SynchronizedBlock {
 			try {
 				Thread.sleep(1);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			list1.add(r.nextInt(100));
@@ -31,7 +30,6 @@ public class SynchronizedBlock {
 			try {
 				Thread.sleep(1);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			list2.add(r.nextInt(100));
@@ -78,7 +76,6 @@ public class SynchronizedBlock {
 			t1.join();
 			t2.join();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		long end = System.currentTimeMillis();

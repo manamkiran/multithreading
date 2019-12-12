@@ -5,21 +5,11 @@ public class SynchronizedInception {
 	public static void main(String[] args) {
 		SynchronizedInception si = new SynchronizedInception();
 
-		new Thread(new Runnable() {
+		new Thread(() -> si.method1())
+		.start();
 
-			@Override
-			public void run() {
-				si.method1();
-			}
-		}).start();
-
-		new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				si.method2();
-			}
-		}).start();
+		new Thread(() -> si.method2())
+		.start();
 	}
 
 	protected void method1() {
@@ -28,7 +18,6 @@ public class SynchronizedInception {
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			System.out.println("Method 1 end");
@@ -40,7 +29,6 @@ public class SynchronizedInception {
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println("Method 2 end");

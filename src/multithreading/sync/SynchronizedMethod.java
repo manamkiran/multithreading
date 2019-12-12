@@ -14,27 +14,18 @@ public class SynchronizedMethod {
 	}
 
 	private void doWork() {
-		Thread t1 = new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				for (int i = 0; i < 10000; i++) {
-					incrementCounter();
-				}
+		Thread t1 = new Thread(() -> {
+			for (int i = 0; i < 10000; i++) {
+				incrementCounter();
 			}
 		});
 
 		t1.start();
 
-		Thread t2 = new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				for (int i = 0; i < 10000; i++) {
-					incrementCounter();
-				}
+		Thread t2 = new Thread(() -> {
+			for (int i = 0; i < 10000; i++) {
+				incrementCounter();
 			}
-
 		});
 
 		t2.start();
@@ -43,7 +34,6 @@ public class SynchronizedMethod {
 			t1.join();
 			t2.join();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println(counter);
